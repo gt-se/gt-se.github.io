@@ -1,0 +1,333 @@
+@font-face {
+  font-family: 'GT-IconSet';
+  src:
+    url('fonts/GT-IconSet.ttf?5osf9p') format('truetype'),
+    url('fonts/GT-IconSet.woff?5osf9p') format('woff'),
+    url('fonts/GT-IconSet.svg?5osf9p#GT-IconSet') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'GT-IconSet' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-printer:before {
+  content: "\e94f";
+  color: #4f2683;
+}
+.icon-double-arrow:before {
+  content: "\e94d";
+}
+.icon-contact_form:before {
+  content: "\e943";
+  color: #4f2d7f;
+}
+.icon-external_link:before {
+  content: "\e944";
+  color: #4f2d7f;
+}
+.icon-location:before {
+  content: "\e945";
+  color: #4f2683;
+}
+.icon-logo:before {
+  content: "\e946";
+  color: #fff;
+}
+.icon-mail-new:before {
+  content: "\e947";
+  color: #4f2d7f;
+}
+.icon-marker-copy .path1:before {
+  content: "\e948";
+  color: rgb(79, 45, 127);
+}
+.icon-marker-copy .path2:before {
+  content: "\e949";
+  margin-left: -0.716796875em;
+  color: rgb(255, 255, 255);
+}
+.icon-marker .path1:before {
+  content: "\e94a";
+  color: rgb(79, 45, 127);
+}
+.icon-marker .path2:before {
+  content: "\e94b";
+  margin-left: -0.716796875em;
+  color: rgb(255, 255, 255);
+}
+.icon-phone-new:before {
+  content: "\e94c";
+  color: #4f2d7f;
+}
+.icon-phone:before {
+  content: "\e942";
+  color: #502d7f;
+}
+.icon-download:before {
+  content: "\e941";
+  color: #502d7f;
+}
+.icon-facebook-white:before {
+  content: "\e93f";
+  color: #fff;
+}
+.icon-homepage:before {
+  content: "\e940";
+}
+.icon-v-card:before {
+  content: "\e915";
+  color: #502d7f;
+}
+.icon-contact-phone:before {
+  content: "\e93b";
+  color: #000;
+}
+.icon-zona-c-h:before {
+  content: "\e93c";
+  color: #000;
+}
+.icon-zona-c:before {
+  content: "\e93d";
+  color: #000;
+}
+.icon-zona:before {
+  content: "\e93e";
+  color: #fff;
+}
+.icon-grid-view:before {
+  content: "\e939";
+}
+.icon-list-view:before {
+  content: "\e93a";
+}
+.icon-magnifier:before {
+  content: "\e938";
+}
+.icon-close:before {
+  content: "\e916";
+}
+.icon-mail-c-h:before {
+  content: "\e936";
+  color: #000;
+}
+.icon-mail-c:before {
+  content: "\e937";
+  color: #000;
+}
+.icon-youtube-c-h .path1:before {
+  content: "\e910";
+  color: rgb(0, 0, 0);
+}
+.icon-youtube-c-h .path2:before {
+  content: "\e911";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-youtube-c:before {
+  content: "\e912";
+}
+.icon-xing-c-h:before {
+  content: "\e913";
+  color: #000;
+}
+.icon-xing-c:before {
+  content: "\e914";
+  color: #000;
+}
+.icon-whatsapp-c:before {
+  content: "\e917";
+  color: #000;
+}
+.icon-whatsapp-c-h:before {
+  content: "\e918";
+  color: #000;
+}
+.icon-twitter-c-h .path1:before {
+  content: "\e919";
+  color: rgb(0, 0, 0);
+}
+.icon-twitter-c-h .path2:before {
+  content: "\e91a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-twitter-c:before {
+  content: "\e91b";
+}
+.icon-slideshare-c-h .path1:before {
+  content: "\e91c";
+  color: rgb(0, 0, 0);
+}
+.icon-slideshare-c-h .path2:before {
+  content: "\e91d";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c-h .path3:before {
+  content: "\e91e";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c-h .path4:before {
+  content: "\e91f";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c-h .path5:before {
+  content: "\e920";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c-h .path6:before {
+  content: "\e921";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c-h .path7:before {
+  content: "\e922";
+  margin-left: -0.9970703125em;
+  color: rgb(255, 255, 255);
+}
+.icon-slideshare-c:before {
+  content: "\e923";
+}
+.icon-sina-c:before {
+  content: "\e924";
+  color: #000;
+}
+.icon-sina-c-h:before {
+  content: "\e925";
+  color: #000;
+}
+.icon-linkedin-c-h .path1:before {
+  content: "\e926";
+  color: rgb(0, 0, 0);
+}
+.icon-linkedin-c-h .path2:before {
+  content: "\e927";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-linkedin-c-h .path3:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-linkedin-c-h .path4:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-linkedin-c:before {
+  content: "\e92a";
+}
+.icon-instagram-c-h .path1:before {
+  content: "\e92b";
+  color: rgb(0, 0, 0);
+}
+.icon-instagram-c-h .path2:before {
+  content: "\e92c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-instagram-c-h .path3:before {
+  content: "\e92d";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-instagram-c:before {
+  content: "\e92e";
+}
+.icon-googleplus-c-h .path1:before {
+  content: "\e92f";
+  color: rgb(0, 0, 0);
+}
+.icon-googleplus-c-h .path2:before {
+  content: "\e930";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-googleplus-c-h .path3:before {
+  content: "\e931";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-googleplus-c-h .path4:before {
+  content: "\e932";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-googleplus-c:before {
+  content: "\e933";
+}
+.icon-facebook-c-h:before {
+  content: "\e934";
+  color: #000;
+}
+.icon-facebook-c:before {
+  content: "\e935";
+}
+.icon-play:before {
+  content: "\e90f";
+}
+.icon-star:before {
+  content: "\e90e";
+  color: #000;
+}
+.icon-pdf:before {
+  content: "\e90d";
+  color: #000;
+}
+.icon-cursor:before {
+  content: "\e90c";
+  color: #000;
+}
+.icon-social-email:before {
+  content: "\e905";
+}
+.icon-social-skillshare:before {
+  content: "\e90b";
+}
+.icon-arrow:before {
+  content: "\e900";
+}
+.icon-cta-arrow:before {
+  content: "\e901";
+}
+.icon-event-clock:before {
+  content: "\e902";
+}
+.icon-event-pin:before {
+  content: "\e903";
+}
+.icon-globe:before {
+  content: "\e904";
+}
+.icon-social-facebook:before {
+  content: "\e906";
+}
+.icon-social-google-plus:before {
+  content: "\e907";
+}
+.icon-social-linkedin:before {
+  content: "\e908";
+}
+.icon-social-twitter:before {
+  content: "\e909";
+}
+.icon-social-youtube:before {
+  content: "\e90a";
+}
