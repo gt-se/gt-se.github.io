@@ -1,14 +1,14 @@
 @font-face {
-  font-family: "GT-Walsheim-Pro-Regular";
+  font-family: "GT-Walsheim-Pro";
   src: url(https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.ttf)
   format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: "GT-Walsheim-Pro";
   src: url(https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.ttf)
   format('truetype');
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
 }
