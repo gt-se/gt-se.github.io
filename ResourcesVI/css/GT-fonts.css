@@ -1,19 +1,19 @@
 @font-face {
     font-family: 'GT-Walsheim-Pro';
-    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/gt-walsheim-pro-regular.eot');
-    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/gt-walsheim-pro-regular.eot?#iefix') format('embedded-opentype'),
-         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/gt-walsheim-pro-regular.woff') format('woff'),
-         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/gt-walsheim-pro-regular.ttf') format('truetype');
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.eot');
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.eot?#iefix') format('embedded-opentype'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.woff') format('woff'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 
 }
 @font-face {
     font-family: 'GT-Walsheim-Pro';
-    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/gt-walsheim-pro-medium.eot');
-    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/gt-walsheim-pro-medium.eot?#iefix') format('embedded-opentype'),
-         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/gt-walsheim-pro-medium.woff') format('woff'),
-         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/gt-walsheim-pro-medium.ttf') format('truetype');
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.eot');
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.eot?#iefix') format('embedded-opentype'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.woff') format('woff'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 
