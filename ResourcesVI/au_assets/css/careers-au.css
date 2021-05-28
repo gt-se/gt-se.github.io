@@ -4763,3 +4763,6 @@ body.lang-changed header[data-sticky="true"].sticky .header__utils .header__lang
     margin-top: 64px;
     margin-bottom: 64px;
 }
+#search-results table, #recent-jobs table {
+	margin-bottom: 64px;
+}
