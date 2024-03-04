@@ -123,15 +123,6 @@ body {
   font-size: 16px;
 }
 
-body {
-  width: 360px;
-  height: 1329px;
-  border: 0;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 #up-form .submit-button .btn-primary {
   border-radius: 4px;
   padding: 1.4rem 4rem 1.4rem 4.6rem;
