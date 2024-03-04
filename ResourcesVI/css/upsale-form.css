@@ -302,6 +302,7 @@ body {
   height: var(--radio-form-field-height, 16px);
   border: 2px solid var(--radio-form-field-border-color, #4f2d7f);
   border-radius: 100%;
+  box-sizing: border-box;
 }
 
 #up-form .form-group label:has(input[type="radio"])::after {
