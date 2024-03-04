@@ -123,6 +123,11 @@ body {
   font-size: 16px;
 }
 
+#up-form {
+  padding: 0;
+  overflow-x: hidden;
+}
+
 #up-form .submit-button .btn-primary {
   border-radius: 4px;
   padding: 1.4rem 4rem 1.4rem 4.6rem;
@@ -562,11 +567,6 @@ body {
 #up-form select:focus, #up-form select:focus-visible {
   border-color: var(--color-focus-visible, #00a4b3);
   outline-color: var(--color-focus-visible, #00a4b3);
-}
-
-.c-widget__body #up-form {
-  padding: 0;
-  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=upsale-form.css.map */
