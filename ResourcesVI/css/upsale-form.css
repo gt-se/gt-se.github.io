@@ -61,12 +61,22 @@ $size-small-title-mobile: $size-very-large; // 2rem
 
 }
 
+body,
+h1, h2, h3, h4, h5, h6,
+input, textarea, select, button,
+label {
+  font-family: 'GT-Walsheim-Pro', Arial, Helvetica, sans-serif;
+}
 h2 {
     font-weight: 700;
 }
-
 h3, h4 {
     font-weight: 600;
+}
+h5, h6,
+input, textarea, select, button,
+label {
+  font-weight: 400;
 }
 
 .template-scoped-style.frame #up-form-element-wrapper #up-form {
