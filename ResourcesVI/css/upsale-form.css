@@ -35,6 +35,40 @@ $size-title-mobile: $size-xx-large; // 3.2rem
 $size-subtitle-mobile: $size-x-large; //2.4rem
 $size-small-title-mobile: $size-very-large; // 2rem
 */
+
+@font-face {
+    font-family: 'GT-Walsheim-Pro';
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.woff') format('woff'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Regular/GT-Walsheim-Pro-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'GT-Walsheim-Pro';
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.woff') format('woff'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Medium/GT-Walsheim-Pro-Medium.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'GT-Walsheim-Pro';
+    src: url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Bold/GT-Walsheim-Pro-Bold.woff') format('woff'),
+         url('https://gt-se.github.io/ResourcesVI/fonts/GT-Walsheim-Pro-Bold/GT-Walsheim-Pro-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h3, h4 {
+    font-weight: 600;
+}
+
 .template-scoped-style.frame #up-form-element-wrapper #up-form {
   padding: 0;
   overflow-x: hidden;
