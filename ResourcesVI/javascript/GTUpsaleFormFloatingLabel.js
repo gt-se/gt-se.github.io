@@ -176,10 +176,15 @@
             // Get all radio and checkbox inputs
             const radioInputs = fieldWrap.querySelectorAll('input[type="radio"]');
             const checkboxInputs = fieldWrap.querySelectorAll('input[type="checkbox"]');
+            const selectInputs = fieldWrap.querySelectorAll('select');
 
             // Apply styling for each input type
             handleInputType(radioInputs, 'radio');
             handleInputType(checkboxInputs, 'checkbox');
+            
+            selectInputs.forEach(select => {
+                select.closest('.form-group')?.classList.add('form-group--select');
+            });
         };
         
         return _this;
