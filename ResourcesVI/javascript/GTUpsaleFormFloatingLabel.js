@@ -72,9 +72,6 @@
             // Add floating label class
             fieldWrap.classList.add('floating-label');
             
-            // Handle error states
-            _this.errorClassHandle(element, fieldWrap);
-            
             // Add label title for accessibility
             _this.addLabelTitle(element, fieldWrap);
             
@@ -85,30 +82,16 @@
             
             // Add event listeners
             element.addEventListener('focusin', function(e) {
-                _this.errorClassHandle(e.target, fieldWrap);
                 fieldWrap.classList.add('focus');
             });
             
             element.addEventListener('focusout', function(e) {
-                _this.errorClassHandle(e.target, fieldWrap);
                 fieldWrap.classList.remove('focus');
             });
             
             element.addEventListener('change', function(e) {
                 _this.filledClassHandle(e.target, fieldWrap);
-                
-                setTimeout(function() {
-                    _this.errorClassHandle(e.target, fieldWrap);
-                }, 1000);
             });
-        };
-        
-        _this.errorClassHandle = function(field, fieldWrap) {
-            if (field.classList.contains('mktoInvalid') && fieldWrap.querySelector('.mktoError')) {
-                fieldWrap.classList.add('error');
-            } else {
-                fieldWrap.classList.remove('error');
-            }
         };
         
         _this.filledClassHandle = function(item, fieldWrap) {
@@ -120,7 +103,7 @@
         };
         
         _this.addLabelTitle = function(field, fieldWrap) {
-            let label = fieldWrap.querySelector('.mktoLabel, label');
+            let label = fieldWrap.querySelector('label');
             const labelContent = label?.textContent.trim();
             if (labelContent && labelContent.length > 0) {
                 label.setAttribute("title", labelContent);
