@@ -23,24 +23,29 @@
                 pardotForm.classList.add(`form-theme--${formTheme}`);
             }, 500);
             // Find form control inputs within Pardot form
-            let inputFields = pardotForm.querySelectorAll('input[type="text"], input[type="email"]');
+            let floatingLabelFields = pardotForm.querySelectorAll('.pd-text, .pd-textarea, .pd-select');
+
             let formFields = pardotForm.querySelectorAll('.form-field');
+            let radioFields = pardotForm.querySelectorAll('.pd-radio');
+            let checkboxFields = pardotForm.querySelectorAll('.pd-checkbox');
+            let selectFields = pardotForm.querySelectorAll('.pd-select');
 
             
-            if (inputFields) {
-                inputFields.forEach(function(element) {
-                    let fieldWrap = element.closest('.form-field');
-                    
-                    if (fieldWrap) {
-                        _this.addFloatingLabelBehavior(element, fieldWrap);
-                    }
+            if (floatingLabelFields) {
+                floatingLabelFields.forEach(element => {
+                    element.classList.add('floating-label');
                 });
             }
 
-            if (formFields) {
-                formFields.forEach(function(element) {
+            if (radioFields) {
+                radioFields.forEach(function(element) {
                     _this.addChoiceClass(element);
-                    _this.optInCheckboxClickHandler(element);
+                });
+            }
+            
+            if (checkboxFields) {
+                checkboxFields.forEach(function(element) {
+                    _this.addChoiceClass(element);
                 });
             }
 
@@ -135,24 +140,24 @@
                 if (inputs.length === 0) return;
                 
                 // Add base classes
-                fieldWrap.classList.add('form-group--choice');
-                fieldWrap.classList.add(inputType);
+                // fieldWrap.classList.add('form-field--choice');
+                // fieldWrap.classList.add(inputType);
 
                 // Add opt-in class for checkbox inputs with opt-in label
-                if (inputType === 'checkbox') {
-                    inputs.forEach(input => {
-                        const optInLabel = fieldWrap?.querySelector('.opt-in-label');
-                        if (optInLabel) {
-                            input.removeAttribute('style');
-                            fieldWrap.classList.add('checkbox--opt-in');
-                        }
-                    });
-                }
+                // if (inputType === 'checkbox') {
+                //     inputs.forEach(input => {
+                //         const optInLabel = fieldWrap?.querySelector('.opt-in-label');
+                //         if (optInLabel) {
+                //             input.removeAttribute('style');
+                //             fieldWrap.classList.add('checkbox--opt-in');
+                //         }
+                //     });
+                // }
 
                 // Add multiple class if more than one input
-                if (inputs.length > 1) {
-                    fieldWrap.classList.add('multiple');
-                }
+                // if (inputs.length > 1) {
+                //     fieldWrap.classList.add('multiple');
+                // }
 
                 // Add wrapper class to each input's label
                 inputs.forEach(input => {
@@ -160,7 +165,7 @@
                     if (labelWrapper) {
                         labelWrapper.classList.add('choice-wrapper');
                         // Remove any inline styles from the label wrapper
-                        labelWrapper.removeAttribute('style');
+                        // labelWrapper.removeAttribute('style');
                         // Create and append choice icon element
                         const choiceIcon = document.createElement('span');
                         choiceIcon.classList.add('choice-icon');
@@ -172,15 +177,12 @@
             // Get all radio and checkbox inputs
             const radioInputs = fieldWrap.querySelectorAll('input[type="radio"]');
             const checkboxInputs = fieldWrap.querySelectorAll('input[type="checkbox"]');
-            const selectInputs = fieldWrap.querySelectorAll('select');
+            const selectWrappers = fieldWrap.querySelectorAll('select');
 
             // Apply styling for each input type
             handleInputType(radioInputs, 'radio');
             handleInputType(checkboxInputs, 'checkbox');
             
-            selectInputs.forEach(select => {
-                select.closest('.form-field')?.classList.add('form-group--select');
-            });
         };
         
         return _this;
