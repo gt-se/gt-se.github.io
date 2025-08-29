@@ -8,7 +8,7 @@
 
     let PardotFormFloatingLabel = function () {
         let _this = this;
-        let formTheme = 'grey';
+        let formTheme = 'white';
         
         // Initialize floating label functionality
         _this.init = function() {
@@ -23,7 +23,7 @@
                 pardotForm.classList.add(`form-theme--${formTheme}`);
             }, 500);
             // Find form control inputs within Pardot form
-            let floatingLabelFields = pardotForm.querySelectorAll('.pd-text, .pd-textarea, .pd-select');
+            let inputFields = pardotForm.querySelectorAll('input[type="text"], input[type="email"], textarea, select');
 
             let formFields = pardotForm.querySelectorAll('.form-field');
             let radioFields = pardotForm.querySelectorAll('.pd-radio');
@@ -31,14 +31,18 @@
             let selectFields = pardotForm.querySelectorAll('.pd-select');
 
             
-            if (floatingLabelFields) {
-                floatingLabelFields.forEach(element => {
-                    element.classList.add('floating-label');
+            if (inputFields) {
+                inputFields.forEach(element => {
+                    const fieldWrap = element.closest('.form-field');
+                    if (fieldWrap) {
+                        _this.addFloatingLabelBehavior(element, fieldWrap);
+                    }
                 });
             }
 
             if (radioFields) {
                 radioFields.forEach(function(element) {
+                    element.querySelector('.value')?.classList.add('pd-radio__list');
                     _this.addChoiceClass(element);
                 });
             }
