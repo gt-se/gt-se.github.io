@@ -1,1 +1,231 @@
-!function(){"use strict";function t(){let l=this,s="grey";return l.init=function(){l.handleUpsalesIframeMessage();let n=document.querySelector("#up-form"),e=n.querySelector(".submit-button"),t=(n.closest(".template-scoped-style")?.removeAttribute("style"),setTimeout(function(){n.classList.add("form-theme--"+s)},500),n.querySelectorAll(".form-control")),o=n.querySelectorAll(".form-group");t&&t.forEach(function(e){var t=e.closest(".form-group");t&&l.addFloatingLabelBehavior(e,t)}),o&&o.forEach(function(e){l.addChoiceClass(e),l.optInCheckboxClickHandler(e)}),e&&e.querySelector("button")?.removeAttribute("style"),setTimeout(function(){const e=n.querySelector(".iti__flag-container");if(e){const o=e.closest(".form-group");if(o){var t=o.querySelector("input");const l=o.querySelector("ul");t&&(t=t.offsetWidth,o.classList.add("form-group--flag-container"),l&&(l.style.minWidth=t+"px"))}}},500)},l.optInCheckboxClickHandler=function(e){const t=e.querySelector('input[type="checkbox"]'),o=e.querySelector(".opt-in-label");t&&o&&o.addEventListener("click",function(e){e.preventDefault(),t.checked=!t.checked,t.dispatchEvent(new Event("change",{bubbles:!0}))})},l.handleUpsalesIframeMessage=function(){window.addEventListener("message",e=>{e.data&&void 0!==e.data.formTheme&&(s=e.data.formTheme)})},l.addFloatingLabelBehavior=function(e,t){t.classList.add("floating-label"),l.addLabelTitle(e,t),setTimeout(function(){l.filledClassHandle(e,t)},1e3),e.addEventListener("focusin",function(e){t.classList.add("focus")}),e.addEventListener("focusout",function(e){t.classList.remove("focus")}),e.addEventListener("change",function(e){l.filledClassHandle(e.target,t)})},l.filledClassHandle=function(e,t){e.value&&0<e.value.length?t.classList.add("filled"):t.classList.remove("filled")},l.addLabelTitle=function(e,t){let o=t.querySelector("label");t=o?.textContent.trim();t&&0<t.length&&(o.setAttribute("title",t),e.setAttribute("title",t))},l.addChoiceClass=function(o){if(o.classList.contains("form-group")){var e=(e,t)=>{0!==e.length&&(o.classList.add("form-group--choice"),o.classList.add(t),"checkbox"===t&&e.forEach(e=>{o?.querySelector(".opt-in-label")&&(e.removeAttribute("style"),o.classList.add("checkbox--opt-in"))}),1<e.length&&o.classList.add("multiple"),e.forEach(e=>{const t=e.closest("label");if(t){t.classList.add("choice-wrapper"),t.removeAttribute("style");const o=document.createElement("span");o.classList.add("choice-icon"),t.appendChild(o)}}))},t=o.querySelectorAll('input[type="radio"]'),l=o.querySelectorAll('input[type="checkbox"]');const n=o.querySelectorAll("select");e(t,"radio"),e(l,"checkbox"),n.forEach(e=>{e.closest(".form-group")?.classList.add("form-group--select")})}},l}function e(){let e=new t;e.init()}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):e(),window.UpsaleFormFloatingLabel=t}();
+/**
+ * GT Upsale Form Floating Label Module
+ * Include this module in the iframe to handle the floating label functionality for form inputs
+ */
+
+(function() {
+    'use strict';
+
+    let UpsaleFormFloatingLabel = function () {
+        let _this = this;
+        let formTheme = 'grey';
+        
+        // Initialize floating label functionality
+        _this.init = function() {
+            _this.handleUpsalesIframeMessage();
+            
+            let upForm = document.querySelector('#up-form');
+            let submitButton = upForm?.querySelector('.submit-button');
+
+            upForm.closest('.template-scoped-style')?.removeAttribute('style');
+
+            setTimeout(function() {
+                upForm.classList.add(`form-theme--${formTheme}`);
+            }, 500);
+            // Find form control inputs within Upsales form
+            let inputFields = upForm.querySelectorAll('.form-control');
+            let formGroups = upForm.querySelectorAll('.form-group');
+
+            
+            if (inputFields) {
+                inputFields.forEach(function(element) {
+                    let fieldWrap = element.closest('.form-group');
+                    
+                    if (fieldWrap) {
+                        _this.addFloatingLabelBehavior(element, fieldWrap);
+                    }
+                });
+            }
+
+            if (formGroups) {
+                formGroups.forEach(function(element) {
+                    _this.addChoiceClass(element);
+                    _this.optInCheckboxClickHandler(element);
+                });
+            }
+
+            if (submitButton) {
+                submitButton.querySelector('button')?.removeAttribute('style');
+            }
+
+            // Check for international telephone input container after a delay
+            setTimeout(function() {
+                const flagContainer = upForm.querySelector('.iti__flag-container');
+                if (flagContainer) {
+                    const flagContainerParent = flagContainer.closest('.form-group');
+                    if (flagContainerParent) {
+                        const input = flagContainerParent.querySelector('input');
+                        const countryList = flagContainerParent.querySelector('ul');
+                        
+                        if (input) {
+                            const inputWidth = input.offsetWidth;
+                            flagContainerParent.classList.add('form-group--flag-container');
+                            
+                            if (countryList) {
+                                countryList.style.minWidth = `${inputWidth}px`;
+                            }
+                        }
+                    }
+                }
+            }, 500);
+        };
+
+        _this.optInCheckboxClickHandler = function(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            const optInLabel = element.querySelector('.opt-in-label');
+
+            if (checkbox && optInLabel) {
+                // Add click handler to label
+                optInLabel.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default label behavior
+                    checkbox.checked = !checkbox.checked; // Toggle checkbox
+                    
+                    // Trigger change event to ensure any other handlers are notified
+                    checkbox.dispatchEvent(new Event('change', {
+                        bubbles: true
+                    }));
+                });
+            }
+        };
+
+        _this.handleUpsalesIframeMessage = function() {
+            window.addEventListener('message', (event) => {
+                
+                // Comment out origin check temporarily for testing
+                // if (event.origin !== 'https://YOUR_MAIN_SITE_ORIGIN') {
+                //   return;
+                // }
+              
+                if (event.data && typeof event.data.formTheme !== 'undefined') {
+                    formTheme = event.data.formTheme;
+                }
+              });
+        }
+        
+        _this.addFloatingLabelBehavior = function(element, fieldWrap) {
+            // Add floating label class
+            fieldWrap.classList.add('floating-label');
+            
+            // Add label title for accessibility
+            _this.addLabelTitle(element, fieldWrap);
+            
+            // Check initial state
+            setTimeout(function() {
+                _this.filledClassHandle(element, fieldWrap);
+            }, 1000);
+            
+            // Add event listeners
+            element.addEventListener('focusin', function(e) {
+                fieldWrap.classList.add('focus');
+            });
+            
+            element.addEventListener('focusout', function(e) {
+                fieldWrap.classList.remove('focus');
+            });
+            
+            element.addEventListener('change', function(e) {
+                _this.filledClassHandle(e.target, fieldWrap);
+            });
+        };
+        
+        _this.filledClassHandle = function(item, fieldWrap) {
+            if (item.value && item.value.length > 0) {
+                fieldWrap.classList.add('filled');
+            } else {
+                fieldWrap.classList.remove('filled');
+            }
+
+            if (item.classList.contains('tt-input')) {
+                item.closest('form').style.overflowY = 'clip';
+            }
+        };
+        
+        _this.addLabelTitle = function(field, fieldWrap) {
+            let label = fieldWrap.querySelector('label');
+            const labelContent = label?.textContent.trim();
+            if (labelContent && labelContent.length > 0) {
+                label.setAttribute("title", labelContent);
+                field.setAttribute("title", labelContent);
+            }
+        };
+
+        _this.addChoiceClass = function(fieldWrap) {
+            // Only process if element is a form group
+            if (!fieldWrap.classList.contains('form-group')) {
+                return;
+            }
+
+            // Helper function to handle input type (radio/checkbox) styling
+            const handleInputType = (inputs, inputType) => {
+                if (inputs.length === 0) return;
+                
+                // Add base classes
+                fieldWrap.classList.add('form-group--choice');
+                fieldWrap.classList.add(inputType);
+
+                // Add opt-in class for checkbox inputs with opt-in label
+                if (inputType === 'checkbox') {
+                    inputs.forEach(input => {
+                        const optInLabel = fieldWrap?.querySelector('.opt-in-label');
+                        if (optInLabel) {
+                            input.removeAttribute('style');
+                            fieldWrap.classList.add('checkbox--opt-in');
+                        }
+                    });
+                }
+
+                // Add multiple class if more than one input
+                if (inputs.length > 1) {
+                    fieldWrap.classList.add('multiple');
+                }
+
+                // Add wrapper class to each input's label
+                inputs.forEach(input => {
+                    const labelWrapper = input.closest('label');
+                    if (labelWrapper) {
+                        labelWrapper.classList.add('choice-wrapper');
+                        // Remove any inline styles from the label wrapper
+                        labelWrapper.removeAttribute('style');
+                        // Create and append choice icon element
+                        const choiceIcon = document.createElement('span');
+                        choiceIcon.classList.add('choice-icon');
+                        labelWrapper.appendChild(choiceIcon);
+                    }
+                });
+            };
+
+            // Get all radio and checkbox inputs
+            const radioInputs = fieldWrap.querySelectorAll('input[type="radio"]');
+            const checkboxInputs = fieldWrap.querySelectorAll('input[type="checkbox"]');
+            const selectInputs = fieldWrap.querySelectorAll('select');
+
+            // Apply styling for each input type
+            handleInputType(radioInputs, 'radio');
+            handleInputType(checkboxInputs, 'checkbox');
+            
+            selectInputs.forEach(select => {
+                select.closest('.form-group')?.classList.add('form-group--select');
+            });
+        };
+        
+        return _this;
+    };
+
+    // Initialize when DOM is ready
+    function initUpsaleFormFloatingLabel() {
+        let floatingLabel = new UpsaleFormFloatingLabel();
+        floatingLabel.init();
+    }
+
+    // Wait for DOM to be fully loaded before initializing
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initUpsaleFormFloatingLabel);
+    } else {
+        // DOM is already loaded
+        initUpsaleFormFloatingLabel();
+    }
+
+    // Expose for manual initialization if needed
+    window.UpsaleFormFloatingLabel = UpsaleFormFloatingLabel;
+
+})();
