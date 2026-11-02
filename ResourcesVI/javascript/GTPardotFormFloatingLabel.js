@@ -6,6 +6,8 @@
 (function() {
     'use strict';
 
+    var pardotThankYouMessage = 'Thank you for your interest. Our team will get in touch with you soon.';
+
     let PardotFormFloatingLabel = function () {
         let _this = this;
         let formTheme = 'white';
@@ -13,9 +15,12 @@
         // Initialize floating label functionality
         _this.init = function() {
             _this.handlePardotIframeMessage();
+            _this.notifyParentOfSuccessfulSubmit();
             
             let pardotForm = document.querySelector('#pardot-form');
-            let submitButton = pardotForm?.querySelector('.submit-button');
+            if (!pardotForm) return;
+
+            let submitButton = pardotForm.querySelector('.submit-button');
 
             // pardotForm.closest('.template-scoped-style')?.removeAttribute('style');
 
@@ -60,6 +65,18 @@
                 copyright.removeAttribute('style');
                 copyright.removeAttribute('align');
             }
+
+            pardotForm.addEventListener('submit', function () {
+                setTimeout(function () {
+                    _this.notifyParentOfSuccessfulSubmit();
+                }, 1500);
+            });
+
+            _this.notifyParentOfSuccessfulSubmit();
+
+            window.addEventListener('load', function () {
+                _this.notifyParentOfSuccessfulSubmit();
+            });
         };
 
         _this.optInCheckboxClickHandler = function(element) {
@@ -78,6 +95,23 @@
                     }));
                 });
             }
+        };
+
+        _this.notifyParentOfSuccessfulSubmit = function() {
+            if (window.__gtPardotFormSuccessPosted) {
+                return;
+            }
+
+            const pardotForm = document.querySelector('#pardot-form');
+            const submitButton = pardotForm?.querySelector('.submit-button, [type="submit"]');
+            const hasThankYou = (document.body?.innerText || '').indexOf(pardotThankYouMessage) !== -1;
+            const formSubmitted = !!(pardotForm && !submitButton);
+            if (!formSubmitted && !hasThankYou) {
+                return;
+            }
+
+            window.__gtPardotFormSuccessPosted = true;
+            window.parent.postMessage({ isPardotFormSuccess: true }, '*');
         };
 
         _this.handlePardotIframeMessage = function() {
