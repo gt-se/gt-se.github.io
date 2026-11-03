@@ -1,7 +1,10 @@
 /**
- * GT Upsale Form Floating Label Module
+ * GT Pardot Form Floating Label Module
  * Include this script in the Pardot form layout. CMS deploy alone does not update iframe behavior
  * until the Pardot layout script URL is repointed (hosted CSS: pardot-form-hosted-iframe.css).
+ *
+ * Release / WI: each market's Pardot thank-you page must match a known body snippet below or use
+ * standard thank-you DOM (.thank-you) / URL path; add market-specific copy to thankYouBodySnippets.
  */
 
 (function() {
@@ -10,11 +13,25 @@
     let PardotFormFloatingLabel = function () {
         let _this = this;
         let formTheme = 'white';
-        var indiaThankYouSnippet = 'Thank you for your interest. Our team will get in touch with you soon.';
+        var thankYouBodySnippets = [
+            'Thank you for your interest. Our team will get in touch with you soon.'
+        ];
+
+        function bodyIndicatesThankYou(bodyText) {
+            if (!bodyText) {
+                return false;
+            }
+            if (/thank\s*you\s*for\s*(your|registering|subscribing|contacting)/i.test(bodyText)) {
+                return true;
+            }
+            return thankYouBodySnippets.some(function (snippet) {
+                return bodyText.indexOf(snippet) !== -1;
+            });
+        }
 
         function isSuccessfulPardotSubmission() {
             const bodyText = document.body?.innerText || '';
-            if (bodyText.indexOf(indiaThankYouSnippet) !== -1) {
+            if (bodyIndicatesThankYou(bodyText)) {
                 return true;
             }
 
