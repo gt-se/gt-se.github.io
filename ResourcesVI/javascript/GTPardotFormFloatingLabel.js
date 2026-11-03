@@ -1,11 +1,12 @@
 /**
- * GT Pardot Form Floating Label Module
- * Include this module in the iframe to handle the floating label functionality for form inputs.
- * Pardot thank-you content must include: <div data-gt-pardot-success></div>
+ * GT Upsale Form Floating Label Module
+ * Include this module in the iframe to handle the floating label functionality for form inputs
  */
 
 (function() {
     'use strict';
+
+    var pardotThankYouMessage = 'Thank you for your interest. Our team will get in touch with you soon.';
 
     let PardotFormFloatingLabel = function () {
         let _this = this;
@@ -14,16 +15,14 @@
         // Initialize floating label functionality
         _this.init = function() {
             _this.handlePardotIframeMessage();
-
-            // Pardot posts the form as a full page load; the response page reports success here.
             _this.notifyParentOfSuccessfulSubmit();
             
             let pardotForm = document.querySelector('#pardot-form');
             if (!pardotForm) return;
 
-            pardotForm.closest('.template-scoped-style')?.removeAttribute('style');
-
             let submitButton = pardotForm.querySelector('.submit-button');
+
+            // pardotForm.closest('.template-scoped-style')?.removeAttribute('style');
 
             setTimeout(function() {
                 pardotForm.classList.add(`form-theme--${formTheme}`);
@@ -35,17 +34,7 @@
             let checkboxFields = pardotForm.querySelectorAll('.pd-checkbox');
             let copyright = pardotForm.querySelector('.copyright');
 
-            pardotForm.querySelectorAll('h2, h3, h4').forEach(function (heading) {
-                heading.removeAttribute('style');
-                heading.querySelectorAll('span').forEach(function (span) {
-                    span.removeAttribute('style');
-                });
-            });
-
-            pardotForm.querySelectorAll('p:not(.submit)').forEach(function (paragraph) {
-                paragraph.removeAttribute('style');
-            });
-
+            
             if (inputFields) {
                 inputFields.forEach(element => {
                     const fieldWrap = element.closest('.form-field');
@@ -76,6 +65,18 @@
                 copyright.removeAttribute('style');
                 copyright.removeAttribute('align');
             }
+
+            pardotForm.addEventListener('submit', function () {
+                setTimeout(function () {
+                    _this.notifyParentOfSuccessfulSubmit();
+                }, 1500);
+            });
+
+            _this.notifyParentOfSuccessfulSubmit();
+
+            window.addEventListener('load', function () {
+                _this.notifyParentOfSuccessfulSubmit();
+            });
         };
 
         _this.optInCheckboxClickHandler = function(element) {
@@ -101,7 +102,11 @@
                 return;
             }
 
-            if (!document.querySelector('[data-gt-pardot-success]')) {
+            const pardotForm = document.querySelector('#pardot-form');
+            const submitButton = pardotForm?.querySelector('.submit-button, [type="submit"]');
+            const hasThankYou = (document.body?.innerText || '').indexOf(pardotThankYouMessage) !== -1;
+            const formSubmitted = !!(pardotForm && !submitButton);
+            if (!formSubmitted && !hasThankYou) {
                 return;
             }
 
@@ -111,6 +116,12 @@
 
         _this.handlePardotIframeMessage = function() {
             window.addEventListener('message', (event) => {
+                
+                // Comment out origin check temporarily for testing
+                // if (event.origin !== 'https://YOUR_MAIN_SITE_ORIGIN') {
+                //   return;
+                // }
+              
                 if (event.data && typeof event.data.formTheme !== 'undefined') {
                     formTheme = event.data.formTheme;
                 }
@@ -186,6 +197,7 @@
             // Get all radio and checkbox inputs
             const radioInputs = fieldWrap.querySelectorAll('input[type="radio"]');
             const checkboxInputs = fieldWrap.querySelectorAll('input[type="checkbox"]');
+            const selectWrappers = fieldWrap.querySelectorAll('select');
 
             // Apply styling for each input type
             handleInputType(radioInputs, 'radio');
@@ -202,7 +214,7 @@
         floatingLabel.init();
     }
 
-    // Wait for DOM is fully loaded before initializing
+    // Wait for DOM to be fully loaded before initializing
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initPardotFormFloatingLabel);
     } else {
